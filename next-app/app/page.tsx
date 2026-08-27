@@ -1,7 +1,7 @@
-import Image from "next/image";
 import styles from "./page.module.css";
 import ButtonLink from "./_components/ButtonLink";
 import NewsList from "./_components/NewsList";
+import Hero from "./_components/Hero";
 import { News } from "./_libs/microcms";
 
 const data: {
@@ -42,21 +42,7 @@ export default function Home() {
   const sliceData = data.contents.slice(0, 3);
   return (
     <>
-      <section className={styles.top}>
-        <div>
-          <h1 className={styles.title}>テクノロジーの力で世界を変える</h1>
-          <p className={styles.description}>
-            私たちは市場をリードしているグローバルカンパニーです。
-          </p>
-        </div>
-        <Image
-          className={styles.bgimg}
-          src="/img-mv.jpg"
-          alt=""
-          width={400}
-          height={600}
-        />
-      </section>
+      <Hero title="テクノロジーの力で世界を変える" sub="私たちは" />
       <section className={styles.news}>
         <h2 className={styles.newsTitle}>News</h2>
         <NewsList news={sliceData} />

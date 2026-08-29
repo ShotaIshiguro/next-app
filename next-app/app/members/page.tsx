@@ -1,49 +1,10 @@
 import styles from "./page.module.css";
 import Image from "next/image";
-import Hero from "../_components/Hero";
+import { getMemberList } from "../_libs/microcms";
+import { MEMBERS_LIST_LIMIT } from "../_constants";
 
-const data = {
-  contents: [
-    {
-      id: "1",
-      image: {
-        url: "/img-member1.jpg",
-        width: 240,
-        height: 240,
-      },
-      name: "デイビッド・チャン",
-      position: "CEO",
-      profile:
-        "グローバルテクノロジー企業での豊富な経験を持つリーダー。以前は大手ソフトウェア企業の上級幹部として勤務し、新市場進出や収益成長に成功。自身の経験と洞察力により、業界のトレンドを見極めて戦略的に方針を策定し、会社の成長を牽引している。",
-    },
-    {
-      id: "2",
-      image: {
-        url: "/img-member2.jpg",
-        width: 240,
-        height: 240,
-      },
-      name: "エミリー・サンダース",
-      position: "COO",
-      profile:
-        "グローバルテクノロジー企業での豊富な経験を持つリーダー。以前は大手ソフトウェア企業の上級幹部として勤務し、新市場進出や収益成長に成功。自身の経験と洞察力により、業界のトレンドを見極めて戦略的に方針を策定し、会社の成長を牽引している。",
-    },
-    {
-      id: "3",
-      image: {
-        url: "/img-member3.jpg",
-        width: 240,
-        height: 240,
-      },
-      name: "ジョン・サンダース",
-      position: "COO",
-      profile:
-        "グローバルテクノロジー企業での豊富な経験を持つリーダー。以前は大手ソフトウェア企業の上級幹部として勤務し、新市場進出や収益成長に成功。自身の経験と洞察力により、業界のトレンドを見極めて戦略的に方針を策定し、会社の成長を牽引している。",
-    },
-  ],
-};
-
-export default function Page() {
+export default async function Page() {
+  const data = await getMemberList({ limit: MEMBERS_LIST_LIMIT });
   return (
     <>
       <div className={styles.container}>
